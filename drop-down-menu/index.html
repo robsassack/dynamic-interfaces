@@ -16,12 +16,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
+      z-index: 1;
     }
 
     .dropdown-content {
-      display: none;
+      visibility: hidden;
       position: absolute;
       width: 100px;
+      transform: translateY(-75px);
+      transition: transform 300ms ease;
+      z-index: -1;
+    }
+
+    .end-state .dropdown-content{
+      transform: translateY(0px);
     }
 
     .dropdown-content a {
@@ -32,6 +40,7 @@
     }
 
     .show {
+      visibility: visible;
       display: flex;
       flex-direction: column;
       background-color: rgb(218, 218, 218);
@@ -43,7 +52,7 @@
   <div class="dropdown">
     <div>Menu</div>
   </div>
-  <div class="dropdown-content show">
+  <div class="dropdown-content">
     <a href="#">Home</a>
     <a href="#">Profile</a>
     <a href="#">About</a>
@@ -54,6 +63,7 @@
   var dropdownContent = document.querySelector('.dropdown-content');
   dropdown.addEventListener('click', function () {
     dropdownContent.classList.toggle('show');
+    document.body.classList.toggle('end-state');
   });
 </script>
 
