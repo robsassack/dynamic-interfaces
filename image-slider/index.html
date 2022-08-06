@@ -141,6 +141,18 @@
     carouselItems[index].classList.add('active');
     carouselIndicators[indicatorIndex].classList.add('active-indicator');
   });
+  carouselIndicators.forEach(function(indicator) {
+    indicator.addEventListener('click', function() {
+      let active = document.querySelector('.active');
+      let activeIndicator = document.querySelector('.active-indicator');
+      index = Array.prototype.indexOf.call(carouselIndicators, indicator);
+      indicatorIndex = Array.prototype.indexOf.call(carouselIndicators, indicator);
+      active.classList.remove('active');
+      activeIndicator.classList.remove('active-indicator');
+      carouselItems[index].classList.add('active');
+      carouselIndicators[indicatorIndex].classList.add('active-indicator');
+    });
+  });
 </script>
 
 </html>
